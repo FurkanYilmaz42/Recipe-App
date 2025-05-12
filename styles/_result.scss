@@ -1,0 +1,43 @@
+.results{
+    display: flex;
+    flex-direction: column;
+
+    .result-link {
+        background-color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        gap: 20px;
+        transition: .5s all ease;
+
+        &:hover{
+            background-color: #f9f5f3;
+            transform: translate(-2px);
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .data {
+            h4 {
+                color: #fbda61;
+                max-width: 200px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                @include laptop {
+                    max-width: 500px;
+                }
+            }
+
+            p {
+                color: gray;
+            }
+        }
+    }
+}
