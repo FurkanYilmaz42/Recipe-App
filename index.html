@@ -1,104 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe App</title>
     <!-- ! Css link -->
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css" />
     <!-- ! Bs Icons Cdn -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
     <!-- ! Container section -->
-     <section class="container">
-        <!-- ! Header section -->
-        <header>
-            <!-- ! Logo -->
-            <div class="logo">
-                <img src="./assets/food-logo.png" alt="Logo">
+    <section class="container">
+      <!-- ! Header section -->
+      <header>
+        <!-- ! Logo -->
+        <div class="logo">
+          <img src="./assets/food-logo.png" alt="Logo" />
+        </div>
+        <!-- ! Form -->
+        <section class="search-form">
+          <form>
+            <input type="search" placeholder="Urun adi giriniz ...." />
+            <button>
+              <i class="bi bi-search"></i>
+              <span>Ara</span>
+            </button>
+          </form>
+        </section>
+        <!-- ! Likes -->
+        <div class="likes">
+          <i class="bi bi-bookmark-heart-fill"></i>
+
+          <div class="likes-list">
+            <a href="#">
+              <img
+                src="http://forkify-api.herokuapp.com/images/4024225151_5f477f16caabf9.jpg"
+                width="50"
+                alt="list-image"
+              />
+              <p>Chicken Parmigiana</p>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- ! Main section -->
+      <main>
+        <!-- ! Resault section -->
+        <section class="results">
+          <h1 class="titel">Urun bulunamdi...</h1>
+        </section>
+
+        <!-- ! Recipe section -->
+        <section class="recipe">
+          <!-- <figure>
+            <img
+              src="https://forkify-api.herokuapp.com/images/19321150c4.jpg"
+              alt="recipe-image"
+            />
+
+            <h1>Slow Cooker Chicken Tortilla Soup</h1>
+
+            <div class="like-area">
+              <i class="bi bi-heart"></i>
             </div>
-            <!-- ! Form -->
-            <section  class="search-form">
-                <form> 
-                    <input type="search" placeholder="Urun adi giriniz ....">
-                    <button>
-                        <i class="bi bi-search"></i>
-                        <span>Ara</span>
-                    </button>
-                </form>
-            </section>
-            <!-- ! Likes -->
-            <div class="likes">
-                <i class="bi bi-bookmark-heart-fill"></i>
+          </figure>
 
-                <div class="likes-list">
-                    <a href="#">
-                        <img src="http://forkify-api.herokuapp.com/images/4024225151_5f477f16caabf9.jpg" width="50" alt="list-image"/>
-                        <p>Chicken Parmigiana</p>
-                    </a>
-                </div>
-            </div>
-        </header>
+          <div class="ingredients"><ul>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i>
+              <span>1 pound shredded, cooked chicken</span>
+            </li>
+          </ul>
+        </div>
 
-        <!-- ! Main section -->
-        <main>
-            <!-- ! Resault section -->
-            <section class="results">
-                <div class="result-link">
-                    <img src="https://forkify-api.herokuapp.com/images/19321150c4.jpg" alt="result-link-img">
-                    <div class="data">
-                        <h4>Slow Cooker Chicken Tortilla Soup</h4>
-                        <p>All Recipes</p>
-                    </div>
-                </div>
+        <div class="button">
+          <button id="add-to-basket">
+            <i class="bi bi-cart"></i>
+            <span>Alisveris Sepetine Ekle</span>
+          </button>
+        </div>
 
-                <div class="result-link">
-                    <img src="https://forkify-api.herokuapp.com/images/19321150c4.jpg" alt="result-link-img">
-                    <div class="data">
-                        <h4>Slow Cooker Chicken Tortilla Soup</h4>
-                        <p>All Recipes</p>
-                    </div>
-                </div>
+          <div class="directions">
+            <h2>Nasil Pisirilir?</h2>
+            <p>
+              Bu tarif dikkatlice <span>All Recipes</span> tarafindan
+              hazirlanmis ve test edilmistir. Diger detaylara onlarin websitesi
+              uzerinden erisebilirsiniz.
+            </p>
 
-                <div class="result-link">
-                    <img src="https://forkify-api.herokuapp.com/images/19321150c4.jpg" alt="result-link-img">
-                    <div class="data">
-                        <h4>Slow Cooker Chicken Tortilla Soup</h4>
-                        <p>All Recipes</p>
-                    </div>
-                </div>
+            <a href="#" target="_blank">Yönerge</a>
+          </div> -->
+        </section>
 
-                <div class="result-link">
-                    <img src="https://forkify-api.herokuapp.com/images/19321150c4.jpg" alt="result-link-img">
-                    <div class="data">
-                        <h4>Slow Cooker Chicken Tortilla Soup</h4>
-                        <p>All Recipes</p>
-                    </div>
-                </div>
+        <!-- ! Basket section -->
+        <section class="basket">
+          <h2>Sepet</h2>
+          
+          <div class="button-area">
+            <button id="clear">
+              <i class="bi bi-trash"></i>
+              <span>Sepeti Temizle</span>
+            </button>
+          </div>
 
-                <div class="result-link">
-                    <img src="https://forkify-api.herokuapp.com/images/19321150c4.jpg" alt="result-link-img">
-                    <div class="data">
-                        <h4>Slow Cooker Chicken Tortilla Soup</h4>
-                        <p>All Recipes</p>
-                    </div>
-                </div>
+          <ul>
+            <!-- <li>
+              <i class="bi bi-x"></i>
+              <span>Sepet elemani</span>
+            </li>
+            <li>
+              <i class="bi bi-x"></i>
+              <span>Sepet elemani</span>
+            </li>
+            <li>
+              <i class="bi bi-x"></i>
+              <span>Sepet elemani</span>
+            </li>
+            <li>
+              <i class="bi bi-x"></i>
+              <span>Sepet elemani</span>
+            </li>
+            <li>
+              <i class="bi bi-x"></i>
+              <span>Sepet elemani</span>
+            </li>
+            <li>
+              <i class="bi bi-x"></i>
+              <span>Sepet elemani</span>
+            </li> -->
+          </ul>
 
-                
-            </section>
-            <!-- ! Recipe section -->
-            <section class="recipe">
-                <h1>Recipe</h1>
-            </section>
-            <!-- ! Basket section -->
-            <section class="basket">
-                <h1>Basket</h1>
-            </section>
-        </main>
-     </section>
+        </section>
+      </main>
+    </section>
 
-    <!-- ! JS Baglantisi -->
+    <!-- ! JS Connection -->
     <script src="./js/main.js" type="module"></script>
-</body>
+
+    <!-- ! UUID JS Connection  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.2.0/uuid.min.js"
+      integrity="sha512-X0CJvcClD8EXFn5Oq8BD5lIsznKDfxb0Sf9Wr8MCCTyAEWaAAxr0Jvm3qyofsmN7eSHMZ0PPQGjVKroLAfexrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
 </html>

@@ -1,15 +1,31 @@
 class API {
-    constructor(query) {
-        this.query = query;
-    }
+  constructor() {
+    this.results = [];
+    this.recipe = {};
+    this.ingredients = [];
+  }
 
-   async getResults() {
-        const response = await fetch("https://forkify-api.herokuapp.com/api/search?q=pizza");
+  async getResults(query) {
+    const response = await fetch(
+      `https://forkify-api.herokuapp.com/api/search?q=${query}`
+    );
 
-        const data = await response.json();
+    const data = await response.json();
 
-        console.log(data);
-    }
+    this.results = data.recipes;
+  }
+
+  async getRecipe(id) {
+    const response = await fetch(
+      `https://forkify-api.herokuapp.com/api/get?rId=${id}`
+    );
+
+    const data = await response.json();
+
+    this.recipe = data.recipe;
+
+    this.ingredients = data.recipe.ingredients;
+  }
 }
 
 export default API;
