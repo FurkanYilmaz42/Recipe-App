@@ -10,7 +10,8 @@ const createIngredient = (ingredients) => {
                 <span> ${ingredient} </span>
               </li>
               `
-    ).join("");
+    )
+    .join("");
 
   return ingredientHtml;
 };
@@ -29,13 +30,54 @@ const getfromLocalStorage = (key) => {
 };
 
 const controlBtn = (basket) => {
-
-  if(basket.length>0){
-    uiElements.clearBtn.computedStyleMap.display="block";
+  if (basket.length > 0) {
+    uiElements.clearBtn.style.display = "block";
   } else {
-    uiElements.clearBtn.computedStyleMap.display="none";
+    uiElements.clearBtn.style.display = "none";
+  }
+};
+
+const isRecipeLiked = (id) => {
+  const likes = getfromLocalStorage("likes") || [];
+
+  for (let i = 0; i < likes.length; i++) {
+    if (likes[i].id === id) return true;
   }
 
-}
+  return false;
+};
 
-export { createIngredient, setToLocalStorage, getfromLocalStorage, controlBtn };
+const addLike = (recipe) => {
+  const likes = getfromLocalStorage("likes") || [];
+
+  likes.push({
+    id: recipe.recipe_id,
+    title: recipe.title,
+    image_url: recipe.image_url,
+  });
+
+  setToLocalStorage("likes", likes);
+};
+
+const removeLike = (id) => {
+  const likes = getfromLocalStorage("likes") || [];
+  const newLikes = [];
+
+  for (let i = 0; i < likes.length; i++) {
+    if (likes[i].id !== id) {
+      newLikes.push(likes[i]);
+    }
+  }
+
+  setToLocalStorage("likes", newLikes);
+};
+
+export {
+  createIngredient,
+  setToLocalStorage,
+  getfromLocalStorage,
+  controlBtn,
+  isRecipeLiked,
+  addLike,
+  removeLike,
+};

@@ -1,4 +1,8 @@
-import { createIngredient } from "./helpers.js";
+import {
+  createIngredient,
+  getfromLocalStorage,
+  isRecipeLiked,
+} from "./helpers.js";
 
 const uiElements = {
     form: document.querySelector("form"),
@@ -6,6 +10,7 @@ const uiElements = {
     recipeArea: document.querySelector(".recipe"),
     basketList: document.querySelector(".basket ul"),
     clearBtn: document.querySelector("#clear"),
+    likeList: document.querySelector(".likes-list"),
 };
 
 const renderResults = (recipes) => {
@@ -32,7 +37,9 @@ const renderResults = (recipes) => {
 const renderRecipes = (recipe) => {
   console.log(recipe);
 
-    const recipeMarkup = `          <figure>
+    const isLiked = isRecipeLiked(recipe.recipe_id);
+
+    const recipeMarkup = ` <figure>
             <img
               src="${recipe.image_url}"
               alt="recipe-image"
@@ -41,26 +48,27 @@ const renderRecipes = (recipe) => {
             <h1>${recipe.title}</h1>
 
             <div class="like-area">
-              <i class="bi bi-heart"></i>
+              <i id='like-btn' class="bi ${
+                isLiked ? "bi-heart-fill" : "bi-heart"
+              }  "></i>
             </div>
           </figure>
 
           <div class="ingredients">
-          <ul>
+            <ul>
             ${createIngredient(recipe.ingredients.slice(0, 15))}
+            
+             
+            </ul>
+          </div>
 
-
-
-          </ul>
-        </div>
-
-        <div class="button">
+          <div class="button">
           <button id="add-to-basket">
             <i class="bi bi-cart"></i>
             <span>Alisveris Sepetine Ekle</span>
           </button>
         </div>
-        
+
           <div class="directions">
             <h2>Nasil Pisirilir?</h2>
             <p>
@@ -86,12 +94,30 @@ const renderLoader = (outlet) => {
 };
 
 const renderBasketItem = (items) => {
-  const markup = items.map((item) => `<li>
+  const markup = items.map((item) => `<li data-id=${item.id}>
               <i class="bi bi-x"></i>
-              <span>${item.titel}</span>
-            </li>`);
+              <span>${item.title}</span>
+            </li>`).join("");
 
     uiElements.basketList.innerHTML = markup;
 };
 
-export { uiElements, renderResults, renderRecipes, renderLoader, renderBasketItem};
+const renderLikes = () => {
+
+  const likes = getfromLocalStorage("likes") || [];
+
+  const likesHtml = likes.map((item) => `      <a href="#">
+              <img
+                src="${item.image_url}"
+                width="50"
+                alt="list-image"
+              />
+              <p>${item.title}</p>
+            </a>`
+    )
+    .join("");
+
+    uiElements.likeList.innerHTML = likesHtml;
+};
+
+export { uiElements, renderResults, renderRecipes, renderLoader, renderBasketItem, renderLikes};
